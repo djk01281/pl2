@@ -17,7 +17,7 @@ static int i = 0;
 %token <str> IDENTIFIER 
 %token <str> CONSTANT 
 %token <str> INT  
-%start <str> translation_unit
+%start translation_unit
 %%
 primary_expression:
  IDENTIFIER {

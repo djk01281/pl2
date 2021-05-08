@@ -5,29 +5,31 @@ Grammar
     1 primary_expression: IDENTIFIER
     2                   | CONSTANT
 
-    3 expression: primary_expression
+    3 $@1: %empty
 
-    4 $@1: %empty
+    4 $@2: %empty
 
-    5 $@2: %empty
+    5 declaration: INT $@1 init_declarator $@2 ';'
 
-    6 declaration: INT $@1 init_declarator $@2 ';'
+    6 $@3: %empty
 
-    7 init_declarator: expression
-    8                | expression '=' CONSTANT
+    7 $@4: %empty
+
+    8 init_declarator: primary_expression $@3 '=' $@4 CONSTANT
 
     9 translation_unit: declaration
+   10                 | %empty
 
 
 Terminals, with rules where they appear
 
 $end (0) 0
-';' (59) 6
+';' (59) 5
 '=' (61) 8
 error (256)
 IDENTIFIER (258) 1
 CONSTANT (259) 2 8
-INT (260) 6
+INT (260) 5
 
 
 Nonterminals, with rules where they appear
@@ -35,19 +37,21 @@ Nonterminals, with rules where they appear
 $accept (8)
     on left: 0
 primary_expression (9)
-    on left: 1 2, on right: 3
-expression (10)
-    on left: 3, on right: 7 8
-declaration (11)
-    on left: 6, on right: 9
-$@1 (12)
-    on left: 4, on right: 6
-$@2 (13)
-    on left: 5, on right: 6
-init_declarator (14)
-    on left: 7 8, on right: 6
-translation_unit (15)
-    on left: 9, on right: 0
+    on left: 1 2, on right: 8
+declaration (10)
+    on left: 5, on right: 9
+$@1 (11)
+    on left: 3, on right: 5
+$@2 (12)
+    on left: 4, on right: 5
+init_declarator (13)
+    on left: 8, on right: 5
+$@3 (14)
+    on left: 6, on right: 8
+$@4 (15)
+    on left: 7, on right: 8
+translation_unit (16)
+    on left: 9 10, on right: 0
 
 
 State 0
@@ -56,15 +60,17 @@ State 0
 
     INT  shift, and go to state 1
 
+    $default  reduce using rule 10 (translation_unit)
+
     declaration       go to state 2
     translation_unit  go to state 3
 
 
 State 1
 
-    6 declaration: INT . $@1 init_declarator $@2 ';'
+    5 declaration: INT . $@1 init_declarator $@2 ';'
 
-    $default  reduce using rule 4 ($@1)
+    $default  reduce using rule 3 ($@1)
 
     $@1  go to state 4
 
@@ -85,14 +91,13 @@ State 3
 
 State 4
 
-    6 declaration: INT $@1 . init_declarator $@2 ';'
+    5 declaration: INT $@1 . init_declarator $@2 ';'
 
     IDENTIFIER  shift, and go to state 6
     CONSTANT    shift, and go to state 7
 
     primary_expression  go to state 8
-    expression          go to state 9
-    init_declarator     go to state 10
+    init_declarator     go to state 9
 
 
 State 5
@@ -118,53 +123,61 @@ State 7
 
 State 8
 
-    3 expression: primary_expression .
+    8 init_declarator: primary_expression . $@3 '=' $@4 CONSTANT
 
-    $default  reduce using rule 3 (expression)
+    $default  reduce using rule 6 ($@3)
+
+    $@3  go to state 10
 
 
 State 9
 
-    7 init_declarator: expression .
-    8                | expression . '=' CONSTANT
+    5 declaration: INT $@1 init_declarator . $@2 ';'
 
-    '='  shift, and go to state 11
+    $default  reduce using rule 4 ($@2)
 
-    $default  reduce using rule 7 (init_declarator)
+    $@2  go to state 11
 
 
 State 10
 
-    6 declaration: INT $@1 init_declarator . $@2 ';'
+    8 init_declarator: primary_expression $@3 . '=' $@4 CONSTANT
 
-    $default  reduce using rule 5 ($@2)
-
-    $@2  go to state 12
+    '='  shift, and go to state 12
 
 
 State 11
 
-    8 init_declarator: expression '=' . CONSTANT
+    5 declaration: INT $@1 init_declarator $@2 . ';'
 
-    CONSTANT  shift, and go to state 13
+    ';'  shift, and go to state 13
 
 
 State 12
 
-    6 declaration: INT $@1 init_declarator $@2 . ';'
+    8 init_declarator: primary_expression $@3 '=' . $@4 CONSTANT
 
-    ';'  shift, and go to state 14
+    $default  reduce using rule 7 ($@4)
+
+    $@4  go to state 14
 
 
 State 13
 
-    8 init_declarator: expression '=' CONSTANT .
+    5 declaration: INT $@1 init_declarator $@2 ';' .
 
-    $default  reduce using rule 8 (init_declarator)
+    $default  reduce using rule 5 (declaration)
 
 
 State 14
 
-    6 declaration: INT $@1 init_declarator $@2 ';' .
+    8 init_declarator: primary_expression $@3 '=' $@4 . CONSTANT
 
-    $default  reduce using rule 6 (declaration)
+    CONSTANT  shift, and go to state 15
+
+
+State 15
+
+    8 init_declarator: primary_expression $@3 '=' $@4 CONSTANT .
+
+    $default  reduce using rule 8 (init_declarator)
