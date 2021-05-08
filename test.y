@@ -14,10 +14,10 @@ static int i = 0;
 %union{
     char *str;
 }
-%token IDENTIFIER 
-%token CONSTANT 
-%token INT  
-%start translation_unit
+%token <str> IDENTIFIER 
+%token <str> CONSTANT 
+%token <str> INT  
+%start <str> translation_unit
 %%
 primary_expression:
  IDENTIFIER {
