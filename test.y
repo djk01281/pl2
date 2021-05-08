@@ -20,14 +20,12 @@ primary_expression:
  IDENTIFIER {
     sprintf(input+i, "%s ", $1);
     i = strlen(input);
-    $$ = $1;
     printf("%s\n", input);
     printf("\t\t reduce IDENTIFIER -> primary_expression\n", $1);
     }
 | CONSTANT {
     sprintf(input+i, "%s ", $1);
     i = strlen(input);
-    $$ = $1;
     printf("%s\n", input);
     printf("\t\t reduce CONSTANT -> primary_expression\n", $1);
     }
@@ -48,8 +46,7 @@ declaration:
      printf("%s", input);
      printf("\t\t shift ;\n");
      printf("%s", input);
-     printf("\t\t reduce declaration_specifiers init_declation_list ; -> declartion");
-     $$=$1+$2+$3;}
+     printf("\t\t reduce declaration_specifiers init_declation_list ; -> declartion");}
 ;
 
 init_declarator:
@@ -62,16 +59,15 @@ init_declarator:
      printf("\t\t shift =\n");}
  CONSTANT{
      printf("%s", input);
-     printf("\t\t reduce primary_expression = CONSTANT -> init_declartion");
-     $$=$1+$2+$3;}
+     printf("\t\t reduce primary_expression = CONSTANT -> init_declartion");}
 ;
 
 translation_unit:
  translation_unit {
      printf("\n=== start ===\n");}
  declaration 
- '\n' {printf("\n end of parsing : %s \n\n\n", input);
-       $$=$1+$2+$3;}
+ '\n' {
+     printf("\n end of parsing : %s \n\n\n", input);}
  |
 ;
 
