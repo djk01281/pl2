@@ -23,17 +23,17 @@ primary_expression:
  IDENTIFIER {
     sprintf(input+i, "%s ", $<str>1);
     i = strlen(input)+1;
-    printf("%s\n", input);
+    printf("%s", input);
     printf("\t\t shift %s\n", $<str>1);
-    printf("%s\n", input);
+    printf("%s", input);
     printf("reduce IDENTIFIER -> primary_expression\n");
     }
 | CONSTANT {
     sprintf(input+i, "%d ", $<num>1);
     i = strlen(input)+1;
-    printf("%s\n", input);
+    printf("%s", input);
     printf("\t\t shift %d\n", $<num>1);
-    printf("%s\n", input);
+    printf("%s", input);
     printf("\t\t reduce CONSTANT -> primary_expression\n");
     }
 ;
