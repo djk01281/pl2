@@ -12,6 +12,7 @@ static int i = 0;
 %}
 %union{
     char* str;
+    int const;
 }
 %token IDENTIFIER 
 %token CONSTANT 
@@ -28,10 +29,10 @@ primary_expression:
     printf("reduce IDENTIFIER -> primary_expression\n");
     }
 | CONSTANT {
-    sprintf(input+i, "%s ", $1);
+    sprintf(input+i, "%d ", $<const>1);
     i = strlen(input)+1;
     printf("%s\n", input);
-    printf("\t\t shift %s\n", $1);
+    printf("\t\t shift %d\n", $<const>1);
     printf("%s\n", input);
     printf("\t\t reduce CONSTANT -> primary_expression\n");
     }
