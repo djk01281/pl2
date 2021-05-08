@@ -8,6 +8,7 @@
 #include <string.h>
 
 void yyerror(char *);
+%}
 %%
 
 "auto" {   return(AUTO); }
@@ -43,7 +44,6 @@ void yyerror(char *);
 "while" {   return(WHILE); }
 [a-z]+ {yylval.str = strdup(yytext); return IDENTIFIER; }
 [0-9]+ {yylval.num = atoi(yytext); return CONSTANT; }
-//deleted string literal
 "..." {   return(ELLIPSIS); }
 ">>=" {   return(RIGHT_ASSIGN); }
 "<<=" {   return(LEFT_ASSIGN); }
