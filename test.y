@@ -3,7 +3,6 @@
 #include <string.h>
 #include <stdlib.h>
 typedef char* string;
-#define YYSTYPE string
 
 int yylex(void);
 void yyerror(char *);
