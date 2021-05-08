@@ -47,8 +47,8 @@ declaration:
  init_declarator{
      printf("\t\t reduce init_declator -> declaration\n");} 
  ';'{
-     sprintf(input+i, "; ");
-     i += 2;
+     sprintf(input+i, " ; ");
+     i += 3;
      printf("%s", input);
      printf("\t\t shift ;\n");
      printf("%s", input);
@@ -59,8 +59,9 @@ init_declarator:
  primary_expression{
      printf("%s", input);
      printf("\t\t reduce blah blah\n");} 
- '='{sprintf(input+i, "= ");
-     i += 2;
+ '='  {
+     sprintf(input+i, " = ");
+     i += 3;
      printf("%s", input);
      printf("\t\t shift =\n");}
  CONSTANT{
