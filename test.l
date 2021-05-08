@@ -13,7 +13,7 @@ void yyerror(char *);
 %%
 "int" { return INT; }
 [a-z]+ {yylval.str = strdup(yytext); return IDENTIFIER; }
-[0-9]+ {yylval = yytext; return CONSTANT; }
+[0-9]+ {yylval.num = atoi(yytext); return CONSTANT; }
 [\n]   {return ('\n');}
 [;]    {return (';');}
 [=]    {return ('=');}
