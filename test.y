@@ -73,7 +73,6 @@ translation_unit:
  declaration 
  '\n' {printf("\n end of parsing : %s \n\n\n", input);
        $$=$1+$2+$3;}
- }
 ;
 
 %%
