@@ -5,6 +5,7 @@
 #include <stdlib.h>
 #include "y.tab.h"
 void count(void);
+void yyerror(char *);
 %}
 
 %%
