@@ -14,20 +14,20 @@ static int i = 0;
 %union{
     char* str;
 }
-%token <str> IDENTIFIER 
-%token <str> CONSTANT 
-%token <str> INT  
+%token IDENTIFIER 
+%token CONSTANT 
+%token INT  
 %start translation_unit
 %%
 primary_expression:
  IDENTIFIER {
-    sprintf(input+i, "%s ", $1->str);
+    sprintf(input+i, "%s ", $<str>1);
     i = strlen(input);
     printf("%s\n", input);
     printf("\t\t reduce IDENTIFIER -> primary_expression\n");
     }
 | CONSTANT {
-    sprintf(input+i, "%s ", $1->str);
+    sprintf(input+i, "%s ", $<str>1);
     i = strlen(input);
     printf("%s\n", input);
     printf("\t\t reduce CONSTANT -> primary_expression\n");
