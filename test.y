@@ -28,10 +28,10 @@ primary_expression:
     printf("reduce IDENTIFIER -> primary_expression\n");
     }
 | CONSTANT {
-    sprintf(input+i, "%s ", $<str>1);
+    sprintf(input+i, "%s ", $1);
     i = strlen(input)+1;
     printf("%s\n", input);
-    printf("\t\t shift %s\n", $<str>1);
+    printf("\t\t shift %s\n", $1);
     printf("%s\n", input);
     printf("\t\t reduce CONSTANT -> primary_expression\n");
     }
@@ -45,6 +45,7 @@ declaration:
      printf("%s", input);
      printf("\t\t reduce INT -> INT\n");} 
  init_declarator{
+     printf("%s", input);
      printf("\t\t reduce init_declator -> declaration\n");} 
  ';'{
      sprintf(input+i, " ; ");
@@ -59,7 +60,7 @@ init_declarator:
  primary_expression{
      printf("%s", input);
      printf("\t\t reduce blah blah\n");} 
- '='  {
+ '=' {
      sprintf(input+i, " = ");
      i += 3;
      printf("%s", input);
