@@ -15,6 +15,7 @@ static int i = 0;
 %token IDENTIFIER 
 %token CONSTANT 
 %token INT  
+%start translation_unit
 %%
 primary_expression:
  IDENTIFIER {
@@ -63,11 +64,7 @@ init_declarator:
 ;
 
 translation_unit:
- translation_unit {
-     printf("\n=== start ===\n");}
  declaration 
- '\n' {
-     printf("\n end of parsing : %s \n\n\n", input);}
  |
 ;
 
