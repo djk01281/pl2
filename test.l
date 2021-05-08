@@ -1,5 +1,4 @@
-D [0-9]
-L [a-zA-Z_]
+
 
 %{
 #include <stdio.h>
@@ -11,7 +10,7 @@ void count(void);
 %%
 "int" { count(); return INT; }
 
-{L}({L}|{D})* { count(); yylval = yytext; return IDENTIFIER; }
+[a-z]+ { count(); yylval = yytext; return IDENTIFIER; }
 [0-9]+ { count(); yylval = atoi(yytext); return CONSTANT; }
 
 [ \t] ; /* skip whitespace */
