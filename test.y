@@ -21,13 +21,13 @@ static int i = 0;
 %%
 primary_expression:
  IDENTIFIER {
-    sprintf(input+i, "%s ", <str>$1);
+    sprintf(input+i, "%s ", $<str>1);
     i = strlen(input);
     printf("%s\n", input);
     printf("\t\t reduce IDENTIFIER -> primary_expression\n");
     }
 | CONSTANT {
-    sprintf(input+i, "%s ", <str>$1);
+    sprintf(input+i, "%s ", $<str>1);
     i = strlen(input);
     printf("%s\n", input);
     printf("\t\t reduce CONSTANT -> primary_expression\n");
