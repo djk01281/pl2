@@ -61,9 +61,9 @@ init_declarator:
      i += sprintf(input+i, " = ");
      printf("%s", input);
      printf("\t\t shift =\n");}
- CONSTANT{
+ primary_expression{
      printf("%s", input);
-     printf("\t\t reduce primary_expression = CONSTANT -> init_declartion\n");}
+     printf("\t\t reduce primary_expression = primary_expression -> init_declartion\n");}
 ;
 
 translation_unit:
