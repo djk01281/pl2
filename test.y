@@ -23,11 +23,15 @@ primary_expression:
     sprintf(input+i, "%s ", $<str>1);
     i = strlen(input);
     printf("%s\n", input);
-    printf("\t\t reduce IDENTIFIER -> primary_expression\n");
+    printf("\t\t shift %s\n", $<str>1);
+    printf("%s\n", input);
+    printf("reduce IDENTIFIER -> primary_expression\n");
     }
 | CONSTANT {
     sprintf(input+i, "%s ", $<str>1);
     i = strlen(input);
+    printf("%s\n", input);
+    printf("\t\t shift %s\n", $<str>1);
     printf("%s\n", input);
     printf("\t\t reduce CONSTANT -> primary_expression\n");
     }
@@ -39,7 +43,7 @@ declaration:
      i += 3;
      printf("int\t\t shift INT\n");
      printf("%s", input);
-     printf("\t\t reduce INT -> INT);");} 
+     printf("\t\t reduce INT -> INT\n");} 
  init_declarator{
      printf("\t\t reduce init_declator -> declaration");} 
  ';'{
@@ -48,20 +52,20 @@ declaration:
      printf("%s", input);
      printf("\t\t shift ;\n");
      printf("%s", input);
-     printf("\t\t reduce declaration_specifiers init_declation_list ; -> declartion");}
+     printf("\t\t reduce declaration_specifiers init_declation_list ; -> declartion\n");}
 ;
 
 init_declarator:
  primary_expression{
      printf("%s", input);
-     printf("\t\t reduce blah blah");} 
+     printf("\t\t reduce blah blah\n");} 
  '='{sprintf(input+i, "=");
      i++;
      printf("%s", input);
      printf("\t\t shift =\n");}
  CONSTANT{
      printf("%s", input);
-     printf("\t\t reduce primary_expression = CONSTANT -> init_declartion");}
+     printf("\t\t reduce primary_expression = CONSTANT -> init_declartion\n");}
 ;
 
 translation_unit:
