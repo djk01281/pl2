@@ -12,7 +12,7 @@ static char input[1024];
 static int i = 0;
 %}
 %union{
-    char *str;
+    char* str;
 }
 %token <str> IDENTIFIER 
 %token <str> CONSTANT 
