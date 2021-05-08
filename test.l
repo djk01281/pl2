@@ -10,8 +10,8 @@ void count(void);
 %%
 "int" { count(); return INT; }
 
-[a-z]+ { count(); yylval = yytext; return IDENTIFIER; }
-[0-9]+ { count(); yylval = atoi(yytext); return CONSTANT; }
+[a-z]+ { count(); yylval = *yytext; return IDENTIFIER; }
+[0-9]+ { count(); yylval = *yytext; return CONSTANT; }
 
 [ \t] ; /* skip whitespace */
 . yyerror("invalid character");
