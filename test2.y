@@ -47,7 +47,7 @@ primary_expression
  expression{
      printf("%s", input);
      printf("\t\t shift (%s\n", input);}
- }
+ 
  ')'{
      i += sprintf(input+i, " ) ");
      printf("%s", input);
@@ -70,7 +70,7 @@ postfix_expression
   expression {
      printf("%s", input);
      printf("\t\t shift [%s\n", input);}
- }
+ 
  ']'{
      i += sprintf(input+i, " ] ");
      printf("%s", input);
@@ -100,7 +100,7 @@ postfix_expression
       argument_expression_list {
      printf("%s", input);
      printf("\t\t shift (%s\n", input);}
- }
+ 
  ')'{
      i += sprintf(input+i, " ) ");
      printf("%s", input);
@@ -203,7 +203,7 @@ unary_expression
  type_name{
      printf("%s", input);
      printf("\t\t shift (%s\n", input);}
- }
+ 
  ')'{
      i += sprintf(input+i, " ) ");
      printf("%s", input);
@@ -260,7 +260,7 @@ cast_expression
  type_name{
      printf("%s", input);
      printf("\t\t shift (%s\n", input);}
- } ')'{
+ ')'{
      i += sprintf(input+i, " ) ");
      printf("%s", input);
      printf("\t\t shift )\n");}
@@ -430,7 +430,7 @@ declaration
 : declaration_specifiers{
     printf("%s", input);
     printf("\t\t reduce declaration_specifiers -> declaration\n");}
-;
+
  ';'{
      i += sprintf(input+i, " ; ");
      printf("%s", input);
@@ -658,7 +658,7 @@ direct_declarator
  declarator{
      printf("%s", input);
      printf("\t\t shift (%s\n", input);}
- }
+ 
  ')'{
      i += sprintf(input+i, " ) ");
      printf("%s", input);
@@ -675,7 +675,7 @@ direct_declarator
  constant_expression {
      printf("%s", input);
      printf("\t\t shift [%s\n", input);}
- }
+ 
  ']'{
      i += sprintf(input+i, " ] ");
      printf("%s", input);
