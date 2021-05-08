@@ -11,7 +11,9 @@ static int depth = 1;
 static char input[1024];
 static int i = 0;
 %}
-
+%union{
+    char *str;
+}
 %token IDENTIFIER 
 %token CONSTANT 
 %token INT  
@@ -22,13 +24,13 @@ primary_expression:
     sprintf(input+i, "%s ", $1);
     i = strlen(input);
     printf("%s\n", input);
-    printf("\t\t reduce IDENTIFIER -> primary_expression\n", $1);
+    printf("\t\t reduce IDENTIFIER -> primary_expression\n");
     }
 | CONSTANT {
     sprintf(input+i, "%s ", $1);
     i = strlen(input);
     printf("%s\n", input);
-    printf("\t\t reduce CONSTANT -> primary_expression\n", $1);
+    printf("\t\t reduce CONSTANT -> primary_expression\n");
     }
 ;
 
