@@ -67,9 +67,8 @@
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
-/*typedef char* string;
+typedef char* string;
 #define YYSTYPE string
-*/
 
 int yylex(void);
 void yyerror(char *);
@@ -77,7 +76,7 @@ static int depth = 1;
 static char input[1024];
 static int i = 0;
 
-#line 81 "y.tab.c" /* yacc.c:339  */
+#line 80 "y.tab.c" /* yacc.c:339  */
 
 # ifndef YY_NULLPTR
 #  if defined __cplusplus && 201103L <= __cplusplus
@@ -138,7 +137,7 @@ int yyparse (void);
 
 /* Copy the second part of user declarations.  */
 
-#line 142 "y.tab.c" /* yacc.c:358  */
+#line 141 "y.tab.c" /* yacc.c:358  */
 
 #ifdef short
 # undef short
@@ -436,8 +435,8 @@ static const yytype_uint8 yytranslate[] =
   /* YYRLINE[YYN] -- Source line where rule number YYN was defined.  */
 static const yytype_uint8 yyrline[] =
 {
-       0,    22,    22,    31,    43,    50,    53,    50,    64,    65,
-      69
+       0,    21,    21,    30,    42,    49,    52,    49,    63,    64,
+      68
 };
 #endif
 
@@ -1209,7 +1208,7 @@ yyreduce:
   switch (yyn)
     {
         case 2:
-#line 22 "test.y" /* yacc.c:1646  */
+#line 21 "test.y" /* yacc.c:1646  */
     {
     printf("%s \t\t shift %s", (yyvsp[0]), (yyvsp[0]));
     sprintf(input+i, "%s ", (yyvsp[0]));
@@ -1219,69 +1218,69 @@ yyreduce:
     printf("%s \t\t reduce IDENTIFIER -> primary_expression", (yyvsp[0]));
     printf("\t\t %s\n", input);
     }
-#line 1223 "y.tab.c" /* yacc.c:1646  */
+#line 1222 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 3:
-#line 31 "test.y" /* yacc.c:1646  */
+#line 30 "test.y" /* yacc.c:1646  */
     {
-    printf("%d \t\t shift %d", (yyvsp[0]), (yyvsp[0]));
-    sprintf(input+i, "%d ", (yyvsp[0]));
+    printf("%s \t\t shift %s", (yyvsp[0]), (yyvsp[0]));
+    sprintf(input+i, "%s ", (yyvsp[0]));
     i = strlen(input);
     (yyval) = (yyvsp[0]);
     printf("\t\t %s\n", input);
-    printf("%d \t\t reduce CONSTANT -> primary_expression", (yyvsp[0]));
+    printf("%s \t\t reduce CONSTANT -> primary_expression", (yyvsp[0]));
     printf("\t\t %s\n", input);
     }
-#line 1237 "y.tab.c" /* yacc.c:1646  */
+#line 1236 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 4:
-#line 43 "test.y" /* yacc.c:1646  */
+#line 42 "test.y" /* yacc.c:1646  */
     {
-    printf(" \t\t reduce assignment_expression -> expression \t\t %s \n", (yyvsp[0]), input);
+    printf("%s \t\t reduce assignment_expression -> expression \t\t %s \n", (yyvsp[0]), input);
     (yyval) = (yyvsp[0]);
 }
-#line 1246 "y.tab.c" /* yacc.c:1646  */
+#line 1245 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 5:
-#line 50 "test.y" /* yacc.c:1646  */
+#line 49 "test.y" /* yacc.c:1646  */
     {
      printf(" \t\t reduce declaration_specifiers init_declation_list ; -> declartion");
  }
-#line 1254 "y.tab.c" /* yacc.c:1646  */
+#line 1253 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 6:
-#line 53 "test.y" /* yacc.c:1646  */
+#line 52 "test.y" /* yacc.c:1646  */
     {
      printf(" \t\t reduce init_declator -> init_declaration_list");
  }
-#line 1262 "y.tab.c" /* yacc.c:1646  */
+#line 1261 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 7:
-#line 56 "test.y" /* yacc.c:1646  */
+#line 55 "test.y" /* yacc.c:1646  */
     {
      printf(" \t\t shift ;");
      printf(" \t\t reduce declaration_specifiers init_declation_list ; -> declartion");
      
  }
-#line 1272 "y.tab.c" /* yacc.c:1646  */
+#line 1271 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 10:
-#line 69 "test.y" /* yacc.c:1646  */
+#line 68 "test.y" /* yacc.c:1646  */
     {
     printf("\n=== start ===\n");
     (yyval) = (yyvsp[0]);
  }
-#line 1281 "y.tab.c" /* yacc.c:1646  */
+#line 1280 "y.tab.c" /* yacc.c:1646  */
     break;
 
 
-#line 1285 "y.tab.c" /* yacc.c:1646  */
+#line 1284 "y.tab.c" /* yacc.c:1646  */
       default: break;
     }
   /* User semantic actions sometimes alter yychar, and that requires
@@ -1509,7 +1508,7 @@ yyreturn:
 #endif
   return yyresult;
 }
-#line 75 "test.y" /* yacc.c:1906  */
+#line 74 "test.y" /* yacc.c:1906  */
 
 void yyerror(char *s) {
     fprintf(stderr, "%s\n", s);

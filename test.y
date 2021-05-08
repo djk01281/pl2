@@ -2,9 +2,8 @@
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
-/*typedef char* string;
+typedef char* string;
 #define YYSTYPE string
-*/
 
 int yylex(void);
 void yyerror(char *);
@@ -29,19 +28,19 @@ primary_expression:
     printf("\t\t %s\n", input);
     }
 | CONSTANT {
-    printf("%d \t\t shift %d", $1, $1);
-    sprintf(input+i, "%d ", $1);
+    printf("%s \t\t shift %s", $1, $1);
+    sprintf(input+i, "%s ", $1);
     i = strlen(input);
     $$ = $1;
     printf("\t\t %s\n", input);
-    printf("%d \t\t reduce CONSTANT -> primary_expression", $1);
+    printf("%s \t\t reduce CONSTANT -> primary_expression", $1);
     printf("\t\t %s\n", input);
     }
 ;
 
 expression:
  primary_expression{
-    printf(" \t\t reduce assignment_expression -> expression \t\t %s \n", $1, input);
+    printf("%s \t\t reduce assignment_expression -> expression \t\t %s \n", $1, input);
     $$ = $1;
 }
 ;
