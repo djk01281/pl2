@@ -25,7 +25,7 @@ primary_expression:
     printf("%s", input);
     printf("\t\t shift %s\n", $<str>1);
     printf("%s", input);
-    printf("reduce IDENTIFIER -> primary_expression\n");
+    printf("\t\t reduce IDENTIFIER -> primary_expression\n");
     }
 | CONSTANT {
     i += sprintf(input+i, "%d ", $<num>1);
