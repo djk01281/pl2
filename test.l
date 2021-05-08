@@ -9,10 +9,13 @@ void yyerror(char *);
 %}
 
 %%
-"int" { count(); return INT; }
+"int" { return INT; }
 
-[a-z]+ { count(); yylval = *yytext; return IDENTIFIER; }
-[0-9]+ { count(); yylval = *yytext; return CONSTANT; }
+[a-z]+ {yylval.str = strdup(yytext); return IDENTIFIER; }
+[0-9]+ {yylval.str = strdup(yytext); return CONSTANT; }
+[\n]   {return *yytext;}
+[;]    {return *yytext;}
+[=]    {return *yytext;}
 
 [ \t] ; /* skip whitespace */
 . yyerror("invalid character");
@@ -21,23 +24,5 @@ void yyerror(char *);
 int yywrap(void)
 {
 return 1;
-}
-
-int column = 0;
-void count(void)
-{
-    int i;
-    for (i = 0; yytext[i] != '\0'; i++){
-        if (yytext[i] == '\n'){
-            column = 0;
-        }
-        else if (yytext[i] == '\t'){
-            column += 8 - (column % 8);
-        }
-        else{
-            column++;
-        }
-    }
-    ECHO;
 }
 //end of file
