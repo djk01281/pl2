@@ -15,7 +15,6 @@ static int i = 0;
 %token IDENTIFIER 
 %token CONSTANT 
 %token INT  
-%start translation_unit
 %%
 primary_expression:
  IDENTIFIER {
@@ -73,6 +72,7 @@ translation_unit:
  declaration 
  '\n' {printf("\n end of parsing : %s \n\n\n", input);
        $$=$1+$2+$3;}
+ |
 ;
 
 %%
