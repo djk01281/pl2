@@ -2,8 +2,7 @@
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
-extern char yytext[]; 
-extern FILE * yyin;
+
 typedef char* string;
 
 int yylex(void);
@@ -90,6 +89,7 @@ void initializeInputBuffer(){
     for(int i = 0; i < sizeof(input); i++) input[i] = 0;
     i = 0;
 }
+extern FILE * yyin;
 int main(int argc, char* *argv){
 char ch;
 if(argc != 2) {printf("useage:  calc filename \n"); exit(1);}
