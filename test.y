@@ -15,8 +15,11 @@ static int i = 0;
     int num;
 }
 %token IDENTIFIER 
-%token CONSTANT 
-%token INT  
+%token CONSTANT STIRNG_LITERAL
+%token INT FLOAT VOID CHAR
+%token RETURN
+%token IF FOR WHILE
+%token ADD_ASSIGN INC_OP
 %start translation_unit
 %%
 primary_expression:
@@ -34,6 +37,9 @@ primary_expression:
     printf("%s", input);
     printf("\t\t reduce CONSTANT -> primary_expression\n");
     }
+ | STIRNG_LITERAL{
+
+ }
 ;
 
 declaration:
