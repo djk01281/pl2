@@ -2,6 +2,8 @@
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
+extern char yytext[]; 
+extern FILE * yyin;
 typedef char* string;
 
 int yylex(void);
@@ -21,6 +23,7 @@ static int i = 0;
 %token IF FOR WHILE
 %token ADD_ASSIGN INC_OP
 %start translation_unit
+
 %%
 primary_expression:
  IDENTIFIER {
@@ -87,12 +90,12 @@ void initializeInputBuffer(){
     for(int i = 0; i < sizeof(input); i++) input[i] = 0;
     i = 0;
 }
-int main(int argc, char *argv){
-    FILE *fh;
-
-    if (argc == 2 && (fh = fopen(argv[1], "r")))
-        yyin = fh;
-    initializeInputBuffer();
-    yyparse();
-    return 0;
+int main(int argc, char* *argv){
+char ch;
+if(argc != 2) {printf("useage:  calc filename \n"); exit(1);}
+if( !(yyin = fopen(argv[1],"r")) ){ 
+       printf("cannot open file\n");exit(1);
+ }
+yyparse();
+return 0;
 }
