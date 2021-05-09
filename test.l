@@ -36,7 +36,7 @@ void yyerror(char *);
 "}" {return *yytext;}
 "[" {return *yytext;}
 "]" {return *yytext;}
-[ \t\v\n\f] ; /* skip whitespace */
+[\t\v\n\f] ; /* skip whitespace */
 . yyerror("invalid character");
 
 %%
