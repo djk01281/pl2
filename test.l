@@ -45,12 +45,4 @@ int yywrap(void)
 return 1;
 }
 
-main(int argc, char* argv[]) {
-    FILE *fh;
-
-    if (argc == 2 && (fh = fopen(argv[1], "r")))
-        yyin = fh;
-    yylex();
-    return 0;
-}   
 //end of file

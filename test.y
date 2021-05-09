@@ -88,7 +88,10 @@ void initializeInputBuffer(){
     i = 0;
 }
 int main(int argc, char *argv){
+    FILE *fh;
 
+    if (argc == 2 && (fh = fopen(argv[1], "r")))
+        yyin = fh;
     initializeInputBuffer();
     yyparse();
     return 0;
