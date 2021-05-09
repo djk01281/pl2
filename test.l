@@ -6,7 +6,6 @@
 #include "y.tab.h"
 #include <string.h>
 
-void count(void);
 void yyerror(char *);
 %}
 
@@ -26,10 +25,6 @@ void yyerror(char *);
 ")" {return *yytext;}
 "<" {return *yytext;}
 ">" {return *yytext;}
-"if" {return IF; }
-"for" {return FOR; }
-"char" {return CHAR; }
-"while" {return WHILE; }
 "+=" {return ADD_ASSIGN; }
 "++" {return INC_OP; }
 "{" {return *yytext;}
